@@ -1,0 +1,13 @@
+language: c
+
+os: osx
+osx_image: xcode8.3
+
+jobs:
+  include:
+    - stage: compile
+      script: make re
+    - stage: norminette+
+      script: make test_norm
+    - stage: 42FileChecker
+      script: make test_42fc
