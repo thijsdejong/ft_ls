@@ -6,7 +6,7 @@
 #    By: tde-jong <tde-jong@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/14 10:45:58 by tde-jong       #+#    #+#                 #
-#    Updated: 2019/03/29 18:10:45 by tde-jong      ########   odam.nl          #
+#    Updated: 2019/04/10 14:59:44 by tde-jong      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ $(NAME):
 	@echo "[+] $(PROJECT): compiling object files"
 	@$(CC) -c $(FLAGS) $(SRCS)
 	@echo "[+] $(PROJECT): creating $(NAME) ..."
-	@$(CC) $(FLAGS) $(SRCS:.c=.o) -o $(NAME)
+	@$(CC) $(FLAGS) $(SRCS:.c=.o) -o $(NAME) -L libft -lft
 
 clean:
 	@echo "[o] $(PROJECT): cleaning library ..."
@@ -57,3 +57,8 @@ test_42fc:
 	@echo "[o] $(PROJECT): running 42FileChecker ..."
 	@cd ~/42FileChecker && bash ./42FileChecker.sh --project "ft_ls" \
 	--path "${TRAVIS_BUILD_DIR}" --no-norminette
+
+build:
+	@make re
+	@make clean
+	@echo "DONE"
