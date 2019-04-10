@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/01 10:50:18 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/10 14:38:58 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 14:48:03 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		pf_handle_d_i(t_info *info)
 	handle_d_i_arg(info);
 	if (ft_isin('-', PF_OUTPUT) != -1)
 		PF_NEGATIVE = 1;
-	PF_OUTPUT = pf_strjoin_nb(get_precision(info), PF_OUTPUT, info);
+	PF_OUTPUT = pf_strjoin_nb(pf_get_precision(info), PF_OUTPUT, info);
 	if (ISON(F_PLUS) && (int)PF_ARG >= 0)
 		PF_OUTPUT = pf_strjoin(ft_strdup("+"), PF_OUTPUT);
 	else if (ISON(F_SPACE) && ((int)PF_ARG >= 0 || PF_ARG == NULL))
@@ -45,9 +45,9 @@ void		pf_handle_d_i(t_info *info)
 	if (PF_NEGATIVE && ft_isin('-', PF_OUTPUT) == -1)
 		PF_OUTPUT = pf_strjoin(ft_strdup("-"), PF_OUTPUT);
 	if (ISON(F_MINUS))
-		PF_OUTPUT = pf_strjoin(PF_OUTPUT, get_spaces(info));
+		PF_OUTPUT = pf_strjoin(PF_OUTPUT, pf_get_spaces(info));
 	else
-		PF_OUTPUT = pf_strjoin(get_spaces(info), PF_OUTPUT);
+		PF_OUTPUT = pf_strjoin(pf_get_spaces(info), PF_OUTPUT);
 	PF_RET += ft_strlen(PF_OUTPUT);
 	ft_putstr(PF_OUTPUT);
 }
@@ -82,13 +82,13 @@ void		pf_handle_o(t_info *info)
 {
 	handle_o_arg(info);
 	if (PF_PRECISION > 0 && PF_PRECISION != 2147483647)
-		PF_OUTPUT = pf_strjoin(get_precision(info), PF_OUTPUT);
+		PF_OUTPUT = pf_strjoin(pf_get_precision(info), PF_OUTPUT);
 	if (ISON(F_HASH))
 		PF_OUTPUT = pf_strjoin(ft_strdup("0"), PF_OUTPUT);
 	if (ISON(F_MINUS))
-		PF_OUTPUT = pf_strjoin(PF_OUTPUT, get_spaces(info));
+		PF_OUTPUT = pf_strjoin(PF_OUTPUT, pf_get_spaces(info));
 	else
-		PF_OUTPUT = pf_strjoin(get_spaces(info), PF_OUTPUT);
+		PF_OUTPUT = pf_strjoin(pf_get_spaces(info), PF_OUTPUT);
 	PF_RET += ft_strlen(PF_OUTPUT);
 	ft_putstr(PF_OUTPUT);
 }
@@ -108,9 +108,9 @@ void		pf_handle_f(t_info *info)
 	else if (ISON(F_SPACE) && ft_isin('-', PF_OUTPUT) == -1)
 		PF_OUTPUT = pf_strjoin(ft_strdup(" "), PF_OUTPUT);
 	if (ISON(F_MINUS))
-		PF_OUTPUT = pf_strjoin(PF_OUTPUT, get_spaces(info));
+		PF_OUTPUT = pf_strjoin(PF_OUTPUT, pf_get_spaces(info));
 	else
-		PF_OUTPUT = pf_strjoin(get_spaces(info), PF_OUTPUT);
+		PF_OUTPUT = pf_strjoin(pf_get_spaces(info), PF_OUTPUT);
 	PF_RET += ft_strlen(PF_OUTPUT);
 	ft_putstr(PF_OUTPUT);
 }

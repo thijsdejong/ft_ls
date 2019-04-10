@@ -6,13 +6,13 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/25 15:04:09 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/03/29 10:02:22 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 14:46:45 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		parse_get_flags(t_info *info, char f)
+int		pf_parse_get_flags(t_info *info, char f)
 {
 	ssize_t	flags;
 
@@ -25,7 +25,7 @@ int		parse_get_flags(t_info *info, char f)
 	return (0);
 }
 
-void	parse_get_width(t_info *info, const char **format)
+void	pf_parse_get_width(t_info *info, const char **format)
 {
 	int	len;
 
@@ -54,7 +54,7 @@ void	parse_get_width(t_info *info, const char **format)
 	}
 }
 
-void	parse_get_precision(t_info *info, const char **format)
+void	pf_parse_get_precision(t_info *info, const char **format)
 {
 	int	len;
 
@@ -83,7 +83,7 @@ void	parse_get_precision(t_info *info, const char **format)
 	}
 }
 
-void	parse_get_mod(t_info *info, const char **format)
+void	pf_parse_get_mod(t_info *info, const char **format)
 {
 	if (ft_isin(**format, MODIFIERS) != -1)
 	{
@@ -103,7 +103,7 @@ void	parse_get_mod(t_info *info, const char **format)
 	}
 }
 
-int		parse_get_conv(t_info *info, char c)
+int		pf_parse_get_conv(t_info *info, char c)
 {
 	ssize_t	conv;
 
