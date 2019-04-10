@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/21 16:13:20 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/01 11:26:50 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 14:39:13 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*pf_strjoin_nb(char *s1, char *s2, t_info *info)
 	return (str);
 }
 
-char	*get_precision(t_info *info)
+char	*pf_get_precision(t_info *info)
 {
 	ssize_t count;
 	char	*str;

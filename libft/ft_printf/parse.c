@@ -6,13 +6,13 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/20 12:09:23 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/03/30 13:39:59 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 14:37:58 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			parse(t_info *info, const char **format)
+int			pf_parse(t_info *info, const char **format)
 {
 	while (parse_get_flags(info, **format))
 		(*format)++;

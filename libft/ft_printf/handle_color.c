@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/26 16:18:20 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/03/26 10:48:41 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 14:38:31 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	put_set(char *str, int val, int *ret)
 	*ret = val;
 }
 
-int			handle_color(t_info *info, const char **format)
+int			pf_handle_color(t_info *info, const char **format)
 {
 	int	ret;
 

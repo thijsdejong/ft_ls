@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/01 10:50:18 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/01 10:57:23 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 14:38:58 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	handle_d_i_arg(t_info *info)
 		PF_OUTPUT = pf_strjoin(PF_OUTPUT, pf_itoa((int)PF_ARG));
 }
 
-void		handle_d_i(t_info *info)
+void		pf_handle_d_i(t_info *info)
 {
 	handle_d_i_arg(info);
 	if (ft_isin('-', PF_OUTPUT) != -1)
@@ -78,7 +78,7 @@ static void	handle_o_arg(t_info *info)
 								pf_itoa_base((unsigned int)PF_ARG, 8));
 }
 
-void		handle_o(t_info *info)
+void		pf_handle_o(t_info *info)
 {
 	handle_o_arg(info);
 	if (PF_PRECISION > 0 && PF_PRECISION != 2147483647)
@@ -93,7 +93,7 @@ void		handle_o(t_info *info)
 	ft_putstr(PF_OUTPUT);
 }
 
-void		handle_f(t_info *info)
+void		pf_handle_f(t_info *info)
 {
 	if (PF_PRECISION < 0 || PF_PRECISION == 2147483647)
 		PF_PRECISION = 6;

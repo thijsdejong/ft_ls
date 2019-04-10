@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlcat.c                                       :+:    :+:            */
+/*   ft_strndup.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/10 11:36:32 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/10 14:44:11 by tde-jong      ########   odam.nl         */
+/*   Created: 2019/04/10 14:40:06 by tde-jong       #+#    #+#                */
+/*   Updated: 2019/04/10 14:40:30 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t			ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strndup(const char *s1, size_t n)
 {
-	size_t	dlen;
-	size_t	slen;
+	int		len;
+	char	*str;
 
-	dlen = ft_min(size, ft_strlen(dst));
-	slen = ft_strlen(src);
-	if (dlen == size)
-	{
-		return (size + slen);
-	}
-	if (slen < size - dlen)
-	{
-		ft_strncat(dst, src, slen);
-	}
-	else
-	{
-		ft_strncat(dst, src, size - dlen - 1);
-		dst[size - 1] = '\0';
-	}
-	return (dlen + slen);
+	len = ft_min(ft_strlen(s1), n);
+	str = (char *)ft_memalloc(len + 1);
+	if (str == NULL)
+		return (NULL);
+	ft_strncpy(str, s1, len);
+	return (str);
 }

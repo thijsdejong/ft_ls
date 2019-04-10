@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/01 10:50:36 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/01 10:54:03 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 14:39:03 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	handle_u_arg(t_info *info)
 								pf_itoa_base((unsigned int)PF_ARG, 10));
 }
 
-void		handle_u(t_info *info)
+void		pf_handle_u(t_info *info)
 {
 	handle_u_arg(info);
 	if (PF_PRECISION > 0 && PF_PRECISION != 2147483647)
@@ -77,7 +77,7 @@ static void	handle_x_arg(t_info *info)
 								pf_itoa_base((unsigned int)PF_ARG, 16));
 }
 
-void		handle_x(t_info *info)
+void		pf_handle_x(t_info *info)
 {
 	handle_x_arg(info);
 	if (PF_PRECISION > 0 && PF_PRECISION != 2147483647)

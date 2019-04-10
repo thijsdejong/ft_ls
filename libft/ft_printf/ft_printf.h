@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/14 10:50:08 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/10 12:19:38 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 14:41:24 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,28 +150,28 @@ void				pf_parse_format(t_info *info, const char *format);
 ** -------------------------- Parsing ------------------------------
 */
 
-int					parse(t_info *info, const char **format);
-int					parse_get_flags(t_info *info, char f);
-void				parse_get_width(t_info *info, const char **format);
-void				parse_get_precision(t_info *info, const char **format);
-void				parse_get_mod(t_info *info, const char **format);
-int					parse_get_conv(t_info *info, char c);
+int					pf_parse(t_info *info, const char **format);
+int					pf_parse_get_flags(t_info *info, char f);
+void				pf_parse_get_width(t_info *info, const char **format);
+void				pf_parse_get_precision(t_info *info, const char **format);
+void				pf_parse_get_mod(t_info *info, const char **format);
+int					pf_parse_get_conv(t_info *info, char c);
 
 /*
 ** -------------------------- Handling ----------------------------
 */
 
-int					handle(t_info *info);
-int					handle_color(t_info *info, const char **format);
-void				handle_s(t_info *info);
-void				handle_c(t_info *info);
-void				handle_p(t_info *info);
-void				handle_percent(t_info *info);
-void				handle_d_i(t_info *info);
-void				handle_o(t_info *info);
-void				handle_f(t_info *info);
-void				handle_u(t_info *info);
-void				handle_x(t_info *info);
+int					pf_handle(t_info *info);
+int					pf_handle_color(t_info *info, const char **format);
+void				pf_handle_s(t_info *info);
+void				pf_handle_c(t_info *info);
+void				pf_handle_p(t_info *info);
+void				pf_handle_percent(t_info *info);
+void				pf_handle_d_i(t_info *info);
+void				pf_handle_o(t_info *info);
+void				pf_handle_f(t_info *info);
+void				pf_handle_u(t_info *info);
+void				pf_handle_x(t_info *info);
 
 /*
 ** -------------------------- Helper ------------------------------
@@ -179,8 +179,8 @@ void				handle_x(t_info *info);
 
 char				*pf_strjoin(char *s1, char *s2);
 char				*pf_strjoin_nb(char *s1, char *s2, t_info *info);
-char				*get_precision(t_info *info);
-char				*get_spaces(t_info *info);
+char				*pf_get_precision(t_info *info);
+char				*pf_get_spaces(t_info *info);
 char				*pf_itoa(intmax_t n);
 char				*pf_ctoa(int c);
 char				*pf_itoa_base(uintmax_t n, unsigned char base);
@@ -190,6 +190,5 @@ void				pf_putstr_precision(char *str, t_info *info);
 int					ft_min(int a, int b);
 int					ft_max(int a, int b);
 void				pf_putstr_zero(char const *s, t_info *info);
-char				*ft_strndup(const char *s1, size_t n);
 
 #endif

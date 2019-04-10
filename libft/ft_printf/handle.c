@@ -6,13 +6,13 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/21 14:20:25 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/01 10:52:13 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 14:38:44 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		handle(t_info *info)
+int		pf_handle(t_info *info)
 {
 	PF_OUTPUT = ft_strnew(0);
 	if (PF_OUTPUT == NULL)
@@ -36,7 +36,7 @@ int		handle(t_info *info)
 	return (RET_OK);
 }
 
-void	handle_s(t_info *info)
+void	pf_handle_s(t_info *info)
 {
 	if (PF_ARG == NULL)
 		PF_OUTPUT = pf_strjoin(PF_OUTPUT, ft_strndup("(null)", PF_PRECISION));
@@ -51,7 +51,7 @@ void	handle_s(t_info *info)
 	ft_putstr(PF_OUTPUT);
 }
 
-void	handle_c(t_info *info)
+void	pf_handle_c(t_info *info)
 {
 	if ((int)PF_ARG == 0)
 	{
@@ -67,7 +67,7 @@ void	handle_c(t_info *info)
 	pf_putstr_zero(PF_OUTPUT, info);
 }
 
-void	handle_p(t_info *info)
+void	pf_handle_p(t_info *info)
 {
 	PF_OUTPUT = pf_strjoin(ft_strdup("0x"), PF_OUTPUT);
 	if (PF_ARG == NULL)
@@ -82,7 +82,7 @@ void	handle_p(t_info *info)
 	ft_putstr(PF_OUTPUT);
 }
 
-void	handle_percent(t_info *info)
+void	pf_handle_percent(t_info *info)
 {
 	PF_OUTPUT = pf_strjoin(PF_OUTPUT, ft_strdup("%"));
 	if (ISON(F_MINUS))

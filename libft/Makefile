@@ -6,7 +6,7 @@
 #    By: tde-jong <tde-jong@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/09 12:43:22 by tde-jong       #+#    #+#                 #
-#    Updated: 2019/04/10 12:34:28 by tde-jong      ########   odam.nl          #
+#    Updated: 2019/04/10 14:45:24 by tde-jong      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ CFILES= ft_strcat.c \
 		ft_strmapi.c \
 		ft_strncat.c \
 		ft_strncpy.c \
+		ft_strndup.c \
 		ft_strnew.c \
 		ft_strrchr.c \
 		ft_strrev.c \
@@ -61,6 +62,8 @@ CFILES= ft_strcat.c \
 		ft_memcpy.c \
 		ft_memmove.c \
 		ft_memset.c \
+		ft_min.c \
+		ft_max.c \
 		ft_bzero.c \
 		ft_memdel.c \
 		ft_putchar_fd.c \
@@ -92,8 +95,7 @@ CFILES= ft_strcat.c \
 		ft_printf/parse_get_attr.c \
 		ft_printf/handle_color.c \
 		ft_printf/helper.c \
-		ft_printf/helper1.c \
-		ft_printf/helper2.c
+		ft_printf/helper1.c
 
 TEMP1=$(CFILES:get_next_line/%=%)
 TEMP2=$(TEMP1:ft_printf/%=%)
@@ -112,26 +114,9 @@ clean:
 	@rm -f $(OFILES)
 	@rm -f *~
 	@rm -f \#*#
-	@echo "[-] libft: removing 42FileChecker ..."
-	@rm -rf 42FileChecker
 
 fclean: clean
 	@echo "[-] libft: removing $(NAME) ..."
 	@rm -f $(NAME)
 
 re: fclean all
-
-test_norm:
-	@make re
-	@echo "[+] $(PROJECT): cloning norminette+ ..."
-	@git clone https://github.com/thijsdejong/codam-norminette-plus ~/norminette+
-	@echo "[o] $(PROJECT): running norminette+ ..."
-	@sh ${TRAVIS_BUILD_DIR}/norminette.sh
-
-test_42fc:
-	@make re
-	@echo "[+] $(PROJECT): cloning 42FileChecker ..."
-	@git clone https://github.com/jgigault/42FileChecker ~/42FileChecker
-	@echo "[o] $(PROJECT): running 42FileChecker ..."
-	@cd ~/42FileChecker && bash ./42FileChecker.sh --project "libft" \
-	--path "${TRAVIS_BUILD_DIR}" --no-norminette
