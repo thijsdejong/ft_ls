@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/30 15:49:06 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/03/30 15:49:56 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 15:38:15 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,25 +62,18 @@ char	*pf_itoa(intmax_t n)
 	return (str);
 }
 
-void	pf_putnbr_ull(unsigned long long int n)
-{
-	if (n >= 10)
-		pf_putnbr_ull(n / 10);
-	ft_putchar((n % 10) + '0');
-}
-
 void	pf_putstr_precision(char *str, t_info *info)
 {
 	int i;
 
 	if (PF_PRECISION == 0)
-		ft_putchar(0);
+		ft_putchar_fd(0, PF_FD);
 	else
 	{
 		i = 0;
 		while (str[i] && i < PF_PRECISION)
 		{
-			ft_putchar(str[i]);
+			ft_putchar_fd(str[i], PF_FD);
 			i++;
 		}
 	}
@@ -96,9 +89,9 @@ void	pf_putstr_zero(char const *s, t_info *info)
 		while (s[i] != '\0')
 		{
 			if (s[i] == -1 && PF_PRINT_ZERO)
-				ft_putchar(0);
+				ft_putchar_fd(0, PF_FD);
 			else
-				ft_putchar(s[i]);
+				ft_putchar_fd(s[i], PF_FD);
 			i++;
 		}
 	}

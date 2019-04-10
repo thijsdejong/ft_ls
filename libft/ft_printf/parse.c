@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/20 12:09:23 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/10 14:49:26 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 15:38:38 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		pf_parse_format(t_info *info, const char *format)
 		}
 		else
 		{
-			ft_putchar(*format);
+			ft_putchar_fd(*format, PF_FD);
 			PF_RET += 1;
 		}
 		format++;

@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/21 14:20:25 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/10 14:47:30 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 15:35:36 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	pf_handle_s(t_info *info)
 	else
 		PF_OUTPUT = pf_strjoin(pf_get_spaces(info), PF_OUTPUT);
 	PF_RET += ft_strlen(PF_OUTPUT);
-	ft_putstr(PF_OUTPUT);
+	ft_putstr_fd(PF_OUTPUT, PF_FD);
 }
 
 void	pf_handle_c(t_info *info)
@@ -79,7 +79,7 @@ void	pf_handle_p(t_info *info)
 	else
 		PF_OUTPUT = pf_strjoin(pf_get_spaces(info), PF_OUTPUT);
 	PF_RET += ft_strlen(PF_OUTPUT);
-	ft_putstr(PF_OUTPUT);
+	ft_putstr_fd(PF_OUTPUT, PF_FD);
 }
 
 void	pf_handle_percent(t_info *info)
@@ -90,5 +90,5 @@ void	pf_handle_percent(t_info *info)
 	else
 		PF_OUTPUT = pf_strjoin(pf_get_spaces(info), PF_OUTPUT);
 	PF_RET += ft_strlen(PF_OUTPUT);
-	ft_putstr(PF_OUTPUT);
+	ft_putstr_fd(PF_OUTPUT, PF_FD);
 }

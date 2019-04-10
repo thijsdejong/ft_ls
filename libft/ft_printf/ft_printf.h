@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/14 10:50:08 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/10 14:41:24 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 15:41:05 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef	struct		s_info
 	void		*temp;
 	int			tempint;
 	int			ret;
+	int			fd;
 }					t_info;
 
 /*
@@ -117,6 +118,7 @@ typedef	struct		s_info
 # define PF_ARGLIST		info->arglist
 # define PF_ARG			info->arg
 # define PF_TEMP		info->temp
+# define PF_FD			info->fd
 
 # define ISON(x)	PF_OPT & x
 # define ENABLE(x)	PF_OPT |= x
@@ -144,13 +146,14 @@ typedef	struct		s_info
 */
 
 int					ft_printf(const char *format, ...);
-void				pf_parse_format(t_info *info, const char *format);
+int					ft_dprintf(int fd, const char *format, ...);
 
 /*
 ** -------------------------- Parsing ------------------------------
 */
 
 int					pf_parse(t_info *info, const char **format);
+void				pf_parse_format(t_info *info, const char *format);
 int					pf_parse_get_flags(t_info *info, char f);
 void				pf_parse_get_width(t_info *info, const char **format);
 void				pf_parse_get_precision(t_info *info, const char **format);
