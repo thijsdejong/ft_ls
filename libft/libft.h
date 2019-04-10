@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/09 12:37:01 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/02/21 21:42:55 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 12:33:08 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ typedef struct	s_list
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct	s_ldtoa
+{
+	long double		save;
+	long double		nb;
+	long double		tmp;
+	char			*ret;
+	int				divi;
+	int				multi;
+	int				prec;
+	int				isneg;
+	int				i;
+}				t_ldtoa;
 
 char			*ft_strcat(char *s1, const char *s2);
 char			*ft_strchr(const char *s, int c);
@@ -93,5 +106,7 @@ void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int				get_next_line(const int fd, char **line);
+char			*ft_ldtoa(long double nb, int prec);
+int				ft_printf(const char *format, ...);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: tde-jong <tde-jong@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/09 12:43:22 by tde-jong       #+#    #+#                 #
-#    Updated: 2019/03/25 12:15:33 by tde-jong      ########   odam.nl          #
+#    Updated: 2019/04/10 12:34:28 by tde-jong      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME=libft.a
 
 FLAGS=-Wall -Wextra -Werror
 
-HFILES=-I includes/
+HFILES=-I get_next_line/
 
-SRC= ft_strcat.c \
+CFILES= ft_strcat.c \
 		ft_strchr.c \
 		ft_strcpy.c \
 		ft_strdup.c \
@@ -76,17 +76,28 @@ SRC= ft_strcat.c \
 		ft_striter.c \
 		ft_striteri.c \
 		ft_strsplit.c \
+		ft_ldtoa.c \
 		ft_lstnew.c \
 		ft_lstdelone.c \
 		ft_lstdel.c \
 		ft_lstadd.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
-		get_next_line.c
+		get_next_line/get_next_line.c \
+		ft_printf/ft_printf.c \
+		ft_printf/parse.c \
+		ft_printf/handle.c \
+		ft_printf/handle1.c \
+		ft_printf/handle2.c \
+		ft_printf/parse_get_attr.c \
+		ft_printf/handle_color.c \
+		ft_printf/helper.c \
+		ft_printf/helper1.c \
+		ft_printf/helper2.c
 
-CFILES=$(SRC)
-
-OFILES=$(SRC:.c=.o)
+TEMP1=$(CFILES:get_next_line/%=%)
+TEMP2=$(TEMP1:ft_printf/%=%)
+OFILES=$(TEMP2:.c=.o)
 
 all: $(NAME)
 

@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_next_line.h                                    :+:    :+:            */
+/*   ft_printf.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/17 07:23:12 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/01/28 09:44:11 by tde-jong      ########   odam.nl         */
+/*   Created: 2019/02/14 10:49:54 by tde-jong       #+#    #+#                */
+/*   Updated: 2019/02/25 14:56:29 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printf.h"
+#include <stdio.h>
 
-# include "libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-
-# define BUFF_SIZE 42
-
-typedef struct			s_gnl_list
+int	ft_printf(const char *format, ...)
 {
-	ssize_t				fd;
-	ssize_t				str_len;
-	char				*str;
-	struct s_gnl_list	*next;
-}						t_gnl_list;
+	t_info	*info;
 
-int						get_next_line(const int fd, char **line);
-
-#endif
+	info = (t_info*)ft_memalloc(sizeof(t_info));
+	if (info == NULL)
+		return (RET_ERROR);
+	va_start(PF_ARGLIST, format);
+	pf_parse_format(info, format);
+	free(info);
+	va_end(PF_ARGLIST);
+	return (PF_RET);
+}
