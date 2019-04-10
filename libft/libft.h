@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/09 12:37:01 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/10 14:43:39 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/10 15:42:45 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int				get_next_line(const int fd, char **line);
 char			*ft_ldtoa(long double nb, int prec);
 int				ft_printf(const char *format, ...);
+int				ft_dprintf(int fd, const char *format, ...);
 
 #endif
