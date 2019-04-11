@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/29 18:08:34 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/11 14:30:21 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/11 15:26:25 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,30 @@
 
 typedef struct dirent	t_dirent;
 
+typedef struct			s_file
+{
+	char			*name;
+	struct s_file	*next;
+}						t_file;
+
 uint8_t g_options;
 
 /*
 ** OPTIONS.C
 */
 
-int		handle_option(char *str);
+int						handle_option(char *str);
 
 /*
 ** PARSE.C
 */
 
-int		parse(char **arguments, int limit);
+int						parse(char **arguments, int limit);
 
 /*
 ** HELPER.C
 */
 
-void	print_invalid_option(char c);
+void					print_invalid_option(char c);
 
 #endif

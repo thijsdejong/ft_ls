@@ -1,6 +1,10 @@
 # ft_ls
 As simple as listing the files in a directory.
 
+https://www.gnu.org/software/libc/manual/html_node/Testing-File-Type.html
+
+https://github.com/agavrel/42-ft_ls/blob/master/srcs/add_new_file.c
+
 ##Notes
 
 - Options to implement (5)
