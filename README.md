@@ -47,15 +47,55 @@ As simple as listing the files in a directory.
 	the contents of the remaining members of the stat structure are unspeci-
 	fied. The value returned in the st_size member is the length of the con-
 	tents of the symbolic link, and does not count any trailing null.`
-- getpwuid
-- getgrgid
+- getpwuid (user id) and getgrgid (group id)
+	`The functions getpwnam(), getpwuid(), and getpwuuid() search the password data-
+	base for the given login name, user uid, or user uuid respectively, always
+	returning the first one encountered.`
 - listxattr
+	`listxattr() retrieves a list of names of extended attributes associated with the
+	given path in the file system.`
 - getxattr
+	`The getxattr() function retrieves up to size bytes of data from the extended
+	attribute identified by name associated with path into the pre-allocated buffer
+	pointed to by value.  The function returns the number of bytes of data
+	retrieved.`
 - time
+	`The time() function returns the value of time in seconds since 0 hours, 0 min-
+	utes, 0 seconds, January 1, 1970, Coordinated Universal Time, without including
+	leap seconds.  If an error occurs, time() returns the value (time_t)-1.`
 - ctime
+	`The ctime() function adjusts the time value for the current time zone, in the
+	same manner as localtime().  It returns a pointer to a 26-character string of
+	the form: Thu Nov 24 18:22:48 1986\n\0`
 - readlink
+	`readlink() places the contents of the symbolic link path in the buffer buf,
+	which has size bufsize.  Readlink does not append a NUL character to buf.`
 - malloc
+	`The malloc() function allocates size bytes of memory and returns a pointer to
+    the allocated memory.`
 - free
+	`The free() function deallocates the memory allocation pointed to by ptr. If ptr
+    is a NULL pointer, no operation is performed.`
 - perror
+	`The perror() function finds the error message corresponding to the current value
+	of the global variable errno (intro(2)) and writes it, followed by a newline, to
+	the standard error file descriptor.  If the argument s is non-NULL and does not
+	point to the null character, this string is prepended to the message string and
+	separated from it by a colon and space (``: ''); otherwise, only the error mes-
+	sage string is printed.`
 - strerror
+	`The strerror() function accepts an error number argument errnum and returns a
+    pointer to the corresponding message string.`
 - exit
+	```The exit() and _Exit() functions terminate a process.
+
+     Before termination, exit() performs the following functions in the order listed:
+
+           1.   Call the functions registered with the atexit(3) function, in the
+                reverse order of their registration.
+
+           2.   Flush all open output streams.
+
+           3.   Close all open streams.
+
+           4.   Unlink all files created with the tmpfile(3) function.```

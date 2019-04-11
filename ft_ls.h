@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/29 18:08:34 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/10 15:58:44 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/11 14:30:21 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,26 @@
 # define OPT_R		(1 << 3)
 # define OPT_T		(1 << 4)
 
-uint8_t ls_options;
+typedef struct dirent	t_dirent;
+
+uint8_t g_options;
+
+/*
+** OPTIONS.C
+*/
+
+int		handle_option(char *str);
+
+/*
+** PARSE.C
+*/
+
+int		parse(char **arguments, int limit);
+
+/*
+** HELPER.C
+*/
+
+void	print_invalid_option(char c);
 
 #endif
