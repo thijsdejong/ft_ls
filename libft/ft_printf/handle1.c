@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/01 10:50:18 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/11 09:17:27 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/11 09:28:24 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void		pf_handle_o(t_info *info)
 {
 	handle_o_arg(info);
 	if (PF_PRECISION > 0 && PF_PRECISION != 2147483647)
-	if (PF_OPT & F_HASH)
 		PF_OUTPUT = pf_strjoin(pf_get_precision(info), PF_OUTPUT);
+	if (PF_OPT & F_HASH)
 		PF_OUTPUT = pf_strjoin(ft_strdup("0"), PF_OUTPUT);
 	if (PF_OPT & F_MINUS)
 		PF_OUTPUT = pf_strjoin(PF_OUTPUT, pf_get_spaces(info));
