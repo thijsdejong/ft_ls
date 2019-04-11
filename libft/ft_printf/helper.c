@@ -42,16 +42,16 @@ char	*pf_get_precision(t_info *info)
 	char	*str;
 
 	count = 0;
-	if (ISON(F_ZERO) && !(ISON(F_MINUS)) && (PF_PRECISION == 0 ||
+	if ((PF_OPT & F_ZERO) && !(PF_OPT & F_MINUS) && (PF_PRECISION == 0 ||
 		PF_PRECISION == 2147483647))
 	{
-		if (ISON(F_PLUS) && !PF_NEGATIVE)
+		if ((PF_OPT & F_PLUS) && !PF_NEGATIVE)
 			PF_WIDTH -= 1;
 		count = PF_WIDTH - ft_strlen(PF_OUTPUT);
 	}
 	else if (PF_PRECISION != 2147483647)
 		count = PF_PRECISION - ft_strlen(PF_OUTPUT) + PF_NEGATIVE;
-	if (ISON(F_SPACE) && !(ISON(F_PLUS)) && PF_PRECISION == 2147483647)
+	if ((PF_OPT & F_SPACE) && !(PF_OPT & F_PLUS) && PF_PRECISION == 2147483647)
 		count -= 1;
 	if (count > 0)
 	{
@@ -70,15 +70,16 @@ char	*pf_get_spaces(t_info *info)
 	char	*str;
 
 	count = PF_WIDTH - ft_strlen(PF_OUTPUT);
-	if (ISON(C_X) && ISON(F_HASH) && ISON(F_ZERO) && PF_ARG)
+	if ((PF_OPT & C_X) && (PF_OPT & F_HASH) && (PF_OPT & F_ZERO) && PF_ARG)
 		count -= 2;
 	if (count > 0)
 	{
 		str = ft_strnew(count);
-		if (str && ISON(F_ZERO) && ((((ISON(C_D) || ISON(C_I)) &&
-			PF_WIDTH <= PF_PRECISION)) || ISON(C_O) || ISON(C_U) ||
-			ISON(C_X) || ISON(C_X_UPP) || ISON(C_F)) && ((PF_PRECISION == 0
-			|| PF_PRECISION == 2147483647) || ISON(C_F)) && !(ISON(F_MINUS)))
+		if (str && (PF_OPT & F_ZERO) && (((((PF_OPT & C_D) || (PF_OPT & C_I)) &&
+			PF_WIDTH <= PF_PRECISION)) || (PF_OPT & C_O) || (PF_OPT & C_U) ||
+			(PF_OPT & C_X) || (PF_OPT & C_X_UPP) || (PF_OPT & C_F)) &&
+			((PF_PRECISION == 0 || PF_PRECISION == 2147483647) ||
+			(PF_OPT & C_F)) && !(PF_OPT & F_MINUS))
 			ft_memset(str, '0', count);
 		else if (str)
 			ft_memset(str, ' ', count);

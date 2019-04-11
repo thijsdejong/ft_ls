@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/21 14:20:25 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/10 15:35:36 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/11 09:14:52 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ int		pf_handle(t_info *info)
 	PF_OUTPUT = ft_strnew(0);
 	if (PF_OUTPUT == NULL)
 		return (RET_ZERO);
-	if (ISON(C_PERCENT))
+	if (PF_OPT & C_PERCENT)
 		pf_handle_percent(info);
 	else
 	{
-		if (!(ISON(C_F)))
+		if (!(PF_OPT & C_F))
 			PF_ARG = va_arg(PF_ARGLIST, void*);
-		ISON(C_S) ? pf_handle_s(info) : 0;
-		ISON(C_C) ? pf_handle_c(info) : 0;
-		ISON(C_P) ? pf_handle_p(info) : 0;
-		ISON(C_D) || ISON(C_I) ? pf_handle_d_i(info) : 0;
-		ISON(C_O) ? pf_handle_o(info) : 0;
-		ISON(C_U) ? pf_handle_u(info) : 0;
-		ISON(C_X) || ISON(C_X_UPP) ? pf_handle_x(info) : 0;
-		ISON(C_F) || ISON(C_F_UPP) ? pf_handle_f(info) : 0;
+		(PF_OPT & C_S) ? pf_handle_s(info) : 0;
+		(PF_OPT & C_C) ? pf_handle_c(info) : 0;
+		(PF_OPT & C_P) ? pf_handle_p(info) : 0;
+		(PF_OPT & C_D) || (PF_OPT & C_I) ? pf_handle_d_i(info) : 0;
+		(PF_OPT & C_O) ? pf_handle_o(info) : 0;
+		(PF_OPT & C_U) ? pf_handle_u(info) : 0;
+		(PF_OPT & C_X) || (PF_OPT & C_X_UPP) ? pf_handle_x(info) : 0;
+		(PF_OPT & C_F) || (PF_OPT & C_F_UPP) ? pf_handle_f(info) : 0;
 	}
 	free(PF_OUTPUT);
 	return (RET_OK);
@@ -43,7 +43,7 @@ void	pf_handle_s(t_info *info)
 	else
 		PF_OUTPUT = pf_strjoin(PF_OUTPUT, ft_strndup((const char*)PF_ARG,
 								PF_PRECISION));
-	if (ISON(F_MINUS))
+	if (PF_OPT & F_MINUS)
 		PF_OUTPUT = pf_strjoin(PF_OUTPUT, pf_get_spaces(info));
 	else
 		PF_OUTPUT = pf_strjoin(pf_get_spaces(info), PF_OUTPUT);
@@ -59,7 +59,7 @@ void	pf_handle_c(t_info *info)
 		PF_PRINT_ZERO = 1;
 	}
 	PF_OUTPUT = pf_strjoin(PF_OUTPUT, pf_ctoa((int)PF_ARG));
-	if (ISON(F_MINUS))
+	if (PF_OPT & F_MINUS)
 		PF_OUTPUT = pf_strjoin(PF_OUTPUT, pf_get_spaces(info));
 	else
 		PF_OUTPUT = pf_strjoin(pf_get_spaces(info), PF_OUTPUT);
@@ -74,7 +74,7 @@ void	pf_handle_p(t_info *info)
 		PF_OUTPUT = pf_strjoin(PF_OUTPUT, ft_strdup("0"));
 	else
 		PF_OUTPUT = pf_strjoin(PF_OUTPUT, pf_itoa_base((uintmax_t)PF_ARG, 16));
-	if (ISON(F_MINUS))
+	if (PF_OPT & F_MINUS)
 		PF_OUTPUT = pf_strjoin(PF_OUTPUT, pf_get_spaces(info));
 	else
 		PF_OUTPUT = pf_strjoin(pf_get_spaces(info), PF_OUTPUT);
@@ -85,7 +85,7 @@ void	pf_handle_p(t_info *info)
 void	pf_handle_percent(t_info *info)
 {
 	PF_OUTPUT = pf_strjoin(PF_OUTPUT, ft_strdup("%"));
-	if (ISON(F_MINUS))
+	if (PF_OPT & F_MINUS)
 		PF_OUTPUT = pf_strjoin(PF_OUTPUT, pf_get_spaces(info));
 	else
 		PF_OUTPUT = pf_strjoin(pf_get_spaces(info), PF_OUTPUT);

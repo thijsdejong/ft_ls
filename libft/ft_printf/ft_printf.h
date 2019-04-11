@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/14 10:50:08 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/10 15:41:05 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/11 08:46:40 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 */
 
 # define FLAGS			"#0-+ "
+# define FLAGS_CNT		5
 # define FLAGS_START	0
-# define FLAGS_END		FLAGS_START + ft_strlen(FLAGS)
+# define FLAGS_END		FLAGS_START + FLAGS_CNT
 
 # define MODIFIERS		"hlLjz"
 # define MODIFIERS_CNT	7
@@ -37,12 +38,14 @@
 # define MOD_END		MOD_START + MODIFIERS_CNT
 
 # define CONVERSIONS	"cspdDioOuUxXfF%"
+# define CONV_CNT		15
 # define CONV_START		MOD_END
-# define CONV_END		CONV_START + ft_strlen(CONVERSIONS)
+# define CONV_END		CONV_START + CONV_CNT
 
 # define PRECISION		"$*."
+# define PREC_CNT		3
 # define PREC_START		CONV_END
-# define PREC_END		PREC_START + ft_strlen(PRECISION)
+# define PREC_END		PREC_START + PREC_CNT
 
 # define F_HASH		(1 << (FLAGS_START + 0))
 # define F_ZERO		(1 << (FLAGS_START + 1))
@@ -119,9 +122,6 @@ typedef	struct		s_info
 # define PF_ARG			info->arg
 # define PF_TEMP		info->temp
 # define PF_FD			info->fd
-
-# define ISON(x)	PF_OPT & x
-# define ENABLE(x)	PF_OPT |= x
 
 # define RET_ERROR	-1
 # define RET_ZERO	0

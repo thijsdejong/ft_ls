@@ -25,12 +25,13 @@ int			pf_parse(t_info *info, const char **format)
 	pf_parse_get_mod(info, format);
 	if (pf_parse_get_conv(info, **format))
 	{
-		if (PF_PRECISION < 0 && !(ISON(C_F)))
+		if (PF_PRECISION < 0 && !((PF_OPT & C_F)))
 			PF_PRECISION = 0;
-		(ISON(C_D_UPP) || ISON(C_O_UPP) || ISON(C_U_UPP)) ? ENABLE(MOD_L) : 0;
-		(ISON(C_D_UPP)) ? ENABLE(C_D) : 0;
-		(ISON(C_O_UPP)) ? ENABLE(C_O) : 0;
-		(ISON(C_U_UPP)) ? ENABLE(C_U) : 0;
+		((PF_OPT & C_D_UPP) || (PF_OPT & C_O_UPP) || (PF_OPT & C_U_UPP)) ?
+			(PF_OPT |= MOD_L) : 0;
+		((PF_OPT & C_D_UPP)) ? (PF_OPT |= C_D) : 0;
+		((PF_OPT & C_O_UPP)) ? (PF_OPT |= C_O) : 0;
+		((PF_OPT & C_U_UPP)) ? (PF_OPT |= C_U) : 0;
 		return (RET_OK);
 	}
 	else

@@ -19,7 +19,7 @@ int		pf_parse_get_flags(t_info *info, char f)
 	flags = ft_isin(f, FLAGS);
 	if (flags != -1)
 	{
-		ENABLE((1 << (FLAGS_START + flags)));
+		(PF_OPT |= (1 << (FLAGS_START + flags)));
 		return (1);
 	}
 	return (0);
@@ -35,7 +35,7 @@ void	pf_parse_get_width(t_info *info, const char **format)
 		if (PF_WIDTH < 0)
 		{
 			PF_WIDTH *= -1;
-			ENABLE(F_MINUS);
+			(PF_OPT |= F_MINUS);
 		}
 		(*format)++;
 	}
@@ -88,16 +88,16 @@ void	pf_parse_get_mod(t_info *info, const char **format)
 	if (ft_isin(**format, MODIFIERS) != -1)
 	{
 		if (**format == 'h')
-			*(*format + 1) == 'h' ? ENABLE(MOD_HH) : (ENABLE(MOD_H));
+			*(*format + 1) == 'h' ? (PF_OPT |= MOD_HH) : (PF_OPT |= MOD_H);
 		else if (**format == 'l')
-			*(*format + 1) == 'l' ? ENABLE(MOD_LL) : (ENABLE(MOD_L));
+			*(*format + 1) == 'l' ? (PF_OPT |= MOD_LL) : (PF_OPT |= MOD_L);
 		else if (**format == 'L')
-			ENABLE(MOD_L_UPP);
+			(PF_OPT |= MOD_L_UPP);
 		else if (**format == 'j')
-			ENABLE(MOD_J);
+			(PF_OPT |= MOD_J);
 		else if (**format == 'z')
-			ENABLE(MOD_Z);
-		if (ISON(MOD_LL) || ISON(MOD_HH))
+			(PF_OPT |= MOD_Z);
+		if ((PF_OPT & MOD_LL) || (PF_OPT & MOD_HH))
 			*format += 1;
 		*format += 1;
 	}
@@ -110,7 +110,7 @@ int		pf_parse_get_conv(t_info *info, char c)
 	conv = ft_isin(c, CONVERSIONS);
 	if (conv != -1)
 	{
-		ENABLE((1 << (CONV_START + conv)));
+		(PF_OPT |= (1 << (CONV_START + conv)));
 		return (1);
 	}
 	return (0);
