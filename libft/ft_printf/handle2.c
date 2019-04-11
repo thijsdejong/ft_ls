@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/01 10:50:36 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/11 09:18:57 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/11 09:27:31 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ void		pf_handle_x(t_info *info)
 {
 	handle_x_arg(info);
 	if (PF_PRECISION > 0 && PF_PRECISION != 2147483647)
-	if ((PF_OPT & F_HASH) && !((PF_OPT & F_ZERO)) && PF_ARG)
 		PF_OUTPUT = pf_strjoin(pf_get_precision(info), PF_OUTPUT);
+	if ((PF_OPT & F_HASH) && !((PF_OPT & F_ZERO)) && PF_ARG)
 		PF_OUTPUT = pf_strjoin(ft_strdup("0x"), PF_OUTPUT);
 	if ((PF_OPT & F_MINUS))
 		PF_OUTPUT = pf_strjoin(PF_OUTPUT, pf_get_spaces(info));
 	else
-	if ((PF_OPT & F_HASH) && (PF_OPT & F_ZERO) && PF_ARG)
 		PF_OUTPUT = pf_strjoin(pf_get_spaces(info), PF_OUTPUT);
+	if ((PF_OPT & F_HASH) && (PF_OPT & F_ZERO) && PF_ARG)
 		PF_OUTPUT = pf_strjoin(ft_strdup("0x"), PF_OUTPUT);
 	PF_RET += ft_strlen(PF_OUTPUT);
 	(PF_OPT & C_X_UPP) ? ft_strtoupper(PF_OUTPUT) : 0;
