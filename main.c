@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/29 18:08:31 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/16 16:33:07 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/16 17:09:48 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_file	*get_file_list(char **filenames, int n, bool first)
 			print_error(filenames[i], ERRNO);
 		i++;
 	}
-	return (NULL);
+	return (head);
 }
 
 int		main(int argc, char **argv)
@@ -43,5 +43,10 @@ int		main(int argc, char **argv)
 	file_list = get_file_list(argv + 1 + offset, argc - 1 - offset, true);
 	if (file_list == NULL)
 		return (EXIT_FAILURE);
+	while (file_list)
+	{
+		ft_printf("%s\n", file_list->name);
+		file_list = file_list->next;
+	}
 	return (EXIT_SUCCESS);
 }
