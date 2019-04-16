@@ -6,7 +6,7 @@
 #    By: tde-jong <tde-jong@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/09 12:43:22 by tde-jong       #+#    #+#                 #
-#    Updated: 2019/04/10 14:45:24 by tde-jong      ########   odam.nl          #
+#    Updated: 2019/04/16 12:19:25 by tde-jong      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ CFILES= ft_strcat.c \
 		ft_strsub.c \
 		ft_strtoupper.c \
 		ft_strtrim.c \
+		ft_ctoa.c \
 		ft_atoi.c \
 		ft_intlen.c \
 		ft_intlen_base_uintmax.c \

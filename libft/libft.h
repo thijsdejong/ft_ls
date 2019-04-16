@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/09 12:37:01 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/10 15:42:45 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/16 12:19:07 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char			*ft_strnstr(const char *haystack, const char *needle,
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strtrim(char const *s);
 int				ft_atoi(const char *str);
+char			*ft_ctoa(int c);
 int				ft_intlen(intmax_t n);
 int				ft_intlen_base_uintmax(uintmax_t n, unsigned char base);
 ssize_t			ft_isin(char c, char *str);
