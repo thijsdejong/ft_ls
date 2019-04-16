@@ -6,17 +6,17 @@
 #    By: tde-jong <tde-jong@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/14 10:45:58 by tde-jong       #+#    #+#                 #
-#    Updated: 2019/04/11 14:32:05 by tde-jong      ########   odam.nl          #
+#    Updated: 2019/04/16 16:13:35 by tde-jong      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_ls
 PROJECT = ft_ls
-SRCS = main.c options.c parse.c helper.c
+SRCS = main.c add_file.c options.c parse.c helper.c
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 
