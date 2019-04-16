@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/11 14:27:31 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/11 14:29:21 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/16 12:18:00 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			handle_option(char *str)
 	{
 		if (!set_option(str[i]))
 		{
-			print_invalid_option(str[i]);
+			print_error(ft_ctoa(str[i]), USAGE);
 			return (0);
 		}
 		i++;

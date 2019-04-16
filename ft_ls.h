@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/29 18:08:34 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/11 15:26:25 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/16 12:22:56 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 # define OPT_L		(1 << 2)
 # define OPT_R		(1 << 3)
 # define OPT_T		(1 << 4)
+
+enum
+{
+	USAGE,
+	ERRNO
+}	e_errors;
 
 typedef struct dirent	t_dirent;
 
@@ -50,6 +56,6 @@ int						parse(char **arguments, int limit);
 ** HELPER.C
 */
 
-void					print_invalid_option(char c);
+void					print_error(char *str, int e);
 
 #endif
