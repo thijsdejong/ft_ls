@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 09:49:26 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/17 11:22:59 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/17 13:55:01 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void		print_full_path(char *full_path, int count)
 
 	if (count > 1)
 	{
-		if (next)
+		if (next || g_options & OPT_R_UPP)
 			ft_printf("\n");
 		else
 			next = 1;
@@ -50,11 +50,26 @@ static void		print_full_path(char *full_path, int count)
 	}
 }
 
-int				display(t_file *head, int count)
+static void		display_list(t_file *head)
+{
+	t_file *file;
+
+	file = head;
+	sort(&head);
+	while (file)
+	{
+		ft_printf("%s\n", file->name);
+		file = file->next;
+	}
+}
+
+void			display(t_file *head, int count, bool first)
 {
 	t_file *file;
 	t_file *sub;
 
+	if (!(g_options & OPT_R_UPP) && first == false)
+		return ;
 	file = head;
 	while (file != NULL)
 	{
@@ -62,14 +77,13 @@ int				display(t_file *head, int count)
 		{
 			sub = read_dir(file->full_path, file->name);
 			print_full_path(file->full_path, count);
-			sort(&sub);
-			while (sub)
+			if (sub)
 			{
-				ft_printf("%s\n", sub->name);
-				sub = sub->next;
+				display_list(sub);
+				display(sub, 2, false);
+				free_lst(&sub);
 			}
 		}
 		file = file->next;
 	}
-	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/11 14:27:06 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/17 12:10:07 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/17 12:31:57 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,14 @@ t_file	*ft_lstswap(t_file *lst1, t_file *lst2)
 	lst1->next = lst2->next;
 	lst2->next = lst1;
 	return (lst2);
+}
+
+void	free_lst(t_file **lst)
+{
+	while (*lst)
+	{
+		free((*lst)->name);
+		free(*lst);
+		*lst = (*lst)->next;
+	}
 }

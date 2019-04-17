@@ -6,13 +6,13 @@
 #    By: tde-jong <tde-jong@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/09 12:43:22 by tde-jong       #+#    #+#                 #
-#    Updated: 2019/04/16 12:19:25 by tde-jong      ########   odam.nl          #
+#    Updated: 2019/04/17 12:25:21 by tde-jong      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libft.a
 
-FLAGS=-Wall -Wextra -Werror
+FLAGS=-Wall -Wextra -Werror -g
 
 HFILES=-I get_next_line/
 
