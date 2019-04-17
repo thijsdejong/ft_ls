@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/16 13:45:37 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/16 16:16:33 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/17 09:46:44 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static t_file	*new_file(char path[PATH_MAX], char *name, t_stat *stat)
 	t_file	*new;
 
 	if (
-		!(new = (t_file*)ft_memalloc(sizeof(t_file)))
-		|| (!(new->name = ft_strdup(name))))
+		(new = (t_file*)ft_memalloc(sizeof(t_file))) == NULL ||
+		(new->name = ft_strdup(name)) == NULL)
 		print_error("", MALLOC_ERROR);
 	new->mode = stat->st_mode;
 	new->st_nlink = stat->st_nlink;

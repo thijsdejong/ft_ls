@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/29 18:08:31 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/16 17:09:48 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/17 11:26:45 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ int		main(int argc, char **argv)
 	file_list = get_file_list(argv + 1 + offset, argc - 1 - offset, true);
 	if (file_list == NULL)
 		return (EXIT_FAILURE);
-	while (file_list)
-	{
-		ft_printf("%s\n", file_list->name);
-		file_list = file_list->next;
-	}
+	if (display(file_list, argc - 1 - offset) == -1)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
