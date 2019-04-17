@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 09:49:26 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/17 13:55:01 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/17 14:08:40 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void		display_list(t_file *head)
 	t_file *file;
 
 	file = head;
-	sort(&head);
+	sort(&file);
 	while (file)
 	{
 		ft_printf("%s\n", file->name);
