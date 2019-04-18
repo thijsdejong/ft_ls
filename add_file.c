@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/16 13:45:37 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/17 13:28:06 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/18 12:43:31 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static t_file	*new_file(char path[PATH_MAX], char *name, t_stat *stat)
 
 int				add_file(char path[PATH_MAX], char *name, t_file **lst)
 {
-	t_stat	stat;
+	t_stat	stat_info;
 	char	full_path[PATH_MAX];
 
 	if (get_full_path(path, name, full_path) == 0)
@@ -74,15 +74,15 @@ int				add_file(char path[PATH_MAX], char *name, t_file **lst)
 		print_error(name, ERRNO);
 		return (-1);
 	}
-	if (lstat(full_path, &stat) == -1)
+	if (stat(full_path, &stat_info) == -1)
 		return (-1);
 	if (*lst == NULL)
-		*lst = new_file(path, name, &stat);
+		*lst = new_file(path, name, &stat_info);
 	else
 	{
 		while ((*lst)->next)
 			lst = &((*lst)->next);
-		(*lst)->next = new_file(path, name, &stat);
+		(*lst)->next = new_file(path, name, &stat_info);
 	}
 	return (1);
 }

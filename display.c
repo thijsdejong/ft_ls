@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 09:49:26 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/17 14:08:40 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/18 12:42:58 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ static t_file	*read_dir(char path[PATH_MAX], char *name)
 	head = NULL;
 	dir = opendir(path);
 	if (dir == NULL)
-		print_error(name, ERRNO);
+	{
+		if (errno != ENOTDIR)
+			print_error(name, ERRNO);
+	}
 	else
 	{
 		de = readdir(dir);
@@ -50,12 +53,8 @@ static void		print_full_path(char *full_path, int count)
 	}
 }
 
-static void		display_list(t_file *head)
+static void		display_list(t_file *file)
 {
-	t_file *file;
-
-	file = head;
-	sort(&file);
 	while (file)
 	{
 		ft_printf("%s\n", file->name);
@@ -79,6 +78,7 @@ void			display(t_file *head, int count, bool first)
 			print_full_path(file->full_path, count);
 			if (sub)
 			{
+				sort(&sub);
 				display_list(sub);
 				display(sub, 2, false);
 				free_lst(&sub);

@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/29 18:08:31 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/17 14:09:03 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/18 10:02:52 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ int		main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	display(file_list, argc - 1 - offset, true);
 	free_lst(&file_list);
-	while (1);
 	return (EXIT_SUCCESS);
 }
