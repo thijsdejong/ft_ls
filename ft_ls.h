@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/29 18:08:34 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/17 13:56:06 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/18 14:53:41 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,12 @@ void					free_lst(t_file **lst);
 */
 
 void					display(t_file *head, int count, bool first);
+
+/*
+** DISPLAY_DETAILED.C
+*/
+
+void					display_list_detailed(t_file *file);
 
 /*
 ** SORT.C

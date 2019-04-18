@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 09:49:26 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/18 12:42:58 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/18 14:53:14 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,15 @@ static void		print_full_path(char *full_path, int count)
 
 static void		display_list(t_file *file)
 {
-	while (file)
+	if (g_options & OPT_L)
+		display_list_detailed(file);
+	else
 	{
-		ft_printf("%s\n", file->name);
-		file = file->next;
+		while (file)
+		{
+			ft_printf("%s\n", file->name);
+			file = file->next;
+		}
 	}
 }
 
