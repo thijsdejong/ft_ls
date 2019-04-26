@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 14:43:36 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/26 12:14:50 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/26 12:33:06 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,22 @@ static void	print_permissions(t_file *file)
 
 void		display_list_detailed(t_file *file)
 {
+	char	lnk[NAME_MAX + 1];
+
 	ft_printf("total %zd\n", get_total_blocks(file));
 	while (file)
 	{
 		print_permissions(file);
-		ft_printf(" %hu %s %s %lli %.16s %s\n", file->st_nlink,
+		ft_printf(" %hu %s %s %lli %.16s %s", file->st_nlink,
 			getpwuid(file->st_uid)->pw_name, getgrgid(file->st_gid)->gr_name,
 			file->size, get_time(file), file->name);
+		if (S_ISLNK(file->mode))
+		{
+			ft_bzero(lnk, NAME_MAX + 1);
+			readlink(file->full_path, lnk, NAME_MAX);
+			ft_printf(" -> %s", lnk);
+		}
+		ft_putchar('\n');
 		file = file->next;
 	}
 }
