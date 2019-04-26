@@ -6,11 +6,19 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 14:43:36 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/26 11:38:05 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/26 12:14:50 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+static char	*get_time(t_file *file)
+{
+	time_t	today;
+
+	time(&today);
+	return (ctime(&(file->time)));
+}
 
 static size_t		get_total_blocks(t_file *file)
 {
@@ -70,9 +78,9 @@ void		display_list_detailed(t_file *file)
 	while (file)
 	{
 		print_permissions(file);
-		ft_printf(" % *hu %s %s %*lli %s\n", 3, file->st_nlink,
-			getpwuid(file->st_uid)->pw_name, getgrgid(file->st_gid)->gr_name, 7,
-			file->size, file->name);
+		ft_printf(" %hu %s %s %lli %.16s %s\n", file->st_nlink,
+			getpwuid(file->st_uid)->pw_name, getgrgid(file->st_gid)->gr_name,
+			file->size, get_time(file), file->name);
 		file = file->next;
 	}
 }
