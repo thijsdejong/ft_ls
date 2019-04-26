@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 14:43:36 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/24 16:53:02 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/26 11:38:05 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,15 @@ static void	print_permissions(t_file *file)
 	if (output == NULL)
 		print_error("", MALLOC_ERROR);
 	output[0] = get_type(file);
+	output[1] = (S_IRUSR & file->mode) ? 'r' : '-';
+	output[2] = (S_IWUSR & file->mode) ? 'w' : '-';
+	output[3] = (S_IXUSR & file->mode) ? 'x' : '-';
+	output[4] = (S_IRGRP & file->mode) ? 'r' : '-';
+	output[5] = (S_IWGRP & file->mode) ? 'w' : '-';
+	output[6] = (S_IXGRP & file->mode) ? 'x' : '-';
+	output[7] = (S_IROTH & file->mode) ? 'r' : '-';
+	output[8] = (S_IWOTH & file->mode) ? 'w' : '-';
+	output[9] = (S_IXOTH & file->mode) ? 'x' : '-';
 	ft_putstr(output);
 	free(output);
 }
@@ -61,7 +70,9 @@ void		display_list_detailed(t_file *file)
 	while (file)
 	{
 		print_permissions(file);
-		ft_printf(" %s\n", file->name);
+		ft_printf(" % *hu %s %s %*lli %s\n", 3, file->st_nlink,
+			getpwuid(file->st_uid)->pw_name, getgrgid(file->st_gid)->gr_name, 7,
+			file->size, file->name);
 		file = file->next;
 	}
 }
