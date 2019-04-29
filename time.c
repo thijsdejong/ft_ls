@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/29 10:21:46 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/29 10:27:02 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/29 11:18:55 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char		*display_year(char *long_time)
 	char	*year;
 
 	shorter_time = (char*)ft_memalloc(sizeof(char) * 12);
-	if (!shorter_time)
-		return (NULL);
+	if (shorter_time == NULL)
+		print_error("", MALLOC_ERROR);
 	ptr = long_time + 4;
 	ptr[20] = '\0';
 	year = ft_strdup(ptr + 15);
@@ -51,7 +51,7 @@ char		*keep_necessary_timedata(char *long_time)
 
 	shorter_time = (char*)ft_memalloc(sizeof(char) * 13);
 	if (shorter_time == NULL)
-		return (NULL);
+		print_error("", MALLOC_ERROR);
 	ptr = long_time + 4;
 	shorter_time = ft_strncpy(shorter_time, ptr, 12);
 	shorter_time[12] = '\0';
