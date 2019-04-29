@@ -6,19 +6,11 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 14:43:36 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/29 09:58:44 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/29 10:26:28 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-static char	*get_time(t_file *file)
-{
-	time_t	today;
-
-	time(&today);
-	return (ctime(&(file->time)));
-}
 
 static size_t		get_total_blocks(t_file *file)
 {
@@ -72,11 +64,12 @@ static void	print_permissions(t_file *file)
 	free(output);
 }
 
-void		display_list_detailed(t_file *file)
+void		display_list_detailed(t_file *file, bool single)
 {
 	char	lnk[NAME_MAX + 1];
 
-	ft_printf("total %zd\n", get_total_blocks(file));
+	if (!single)
+		ft_printf("total %zd\n", get_total_blocks(file));
 	while (file)
 	{
 		print_permissions(file);
@@ -89,7 +82,7 @@ void		display_list_detailed(t_file *file)
 			ft_printf("%u ", file->st_uid);
 		else
 			ft_printf("%s ", getgrgid(file->st_gid)->gr_name);
-		ft_printf("%lli %.16s %s", file->size, get_time(file), file->name);
+		ft_printf("%lli %.16s %s", file->size, get_date(file), file->name);
 		if (S_ISLNK(file->mode))
 		{
 			ft_bzero(lnk, NAME_MAX + 1);

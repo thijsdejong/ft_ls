@@ -6,14 +6,14 @@
 #    By: tde-jong <tde-jong@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/14 10:45:58 by tde-jong       #+#    #+#                 #
-#    Updated: 2019/04/18 14:54:00 by tde-jong      ########   odam.nl          #
+#    Updated: 2019/04/29 10:26:37 by tde-jong      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_ls
 PROJECT = ft_ls
 SRCS = main.c add_file.c display.c display_detailed.c options.c parse.c \
-	helper.c sort.c
+	helper.c sort.c time.c
 
 CC = gcc
 
