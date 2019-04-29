@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 14:43:36 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/29 10:26:28 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/29 10:31:53 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static size_t		get_total_blocks(t_file *file)
 	return (blocks);
 }
 
-static char		get_type(t_file *file)
+static char			get_type(t_file *file)
 {
 	if (S_ISDIR(file->mode))
 		return ('d');
@@ -43,7 +43,7 @@ static char		get_type(t_file *file)
 		return ('-');
 }
 
-static void	print_permissions(t_file *file)
+static void			print_permissions(t_file *file)
 {
 	char *output;
 
@@ -64,7 +64,7 @@ static void	print_permissions(t_file *file)
 	free(output);
 }
 
-void		display_list_detailed(t_file *file, bool single)
+void				display_list_detailed(t_file *file, bool single)
 {
 	char	lnk[NAME_MAX + 1];
 
@@ -73,11 +73,10 @@ void		display_list_detailed(t_file *file, bool single)
 	while (file)
 	{
 		print_permissions(file);
-		ft_printf(" %hu ", file->st_nlink);
 		if (getpwuid(file->st_uid) == NULL)
-			ft_printf("%u ", file->st_uid);
+			ft_printf(" %hu %u ", file->st_nlink, file->st_uid);
 		else
-			ft_printf("%s ", getpwuid(file->st_uid)->pw_name);
+			ft_printf(" %hu %s ", file->st_nlink, getpwuid(file->st_uid)->pw_name);
 		if (getgrgid(file->st_gid) == NULL)
 			ft_printf("%u ", file->st_uid);
 		else
