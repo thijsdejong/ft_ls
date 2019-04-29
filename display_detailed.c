@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 14:43:36 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/29 10:31:53 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/29 11:02:13 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,34 +60,39 @@ static void			print_permissions(t_file *file)
 	output[7] = (S_IROTH & file->mode) ? 'r' : '-';
 	output[8] = (S_IWOTH & file->mode) ? 'w' : '-';
 	output[9] = (S_IXOTH & file->mode) ? 'x' : '-';
+	output[10] = ' ';
 	ft_putstr(output);
 	free(output);
 }
 
-void				display_list_detailed(t_file *file, bool single)
+void				print_link(t_file *file)
 {
 	char	lnk[NAME_MAX + 1];
 
+	ft_bzero(lnk, NAME_MAX + 1);
+	readlink(file->full_path, lnk, NAME_MAX);
+	ft_printf(" -> %s", lnk);
+}
+
+void				display_list_detailed(t_file *file, bool single)
+{
 	if (!single)
 		ft_printf("total %zd\n", get_total_blocks(file));
 	while (file)
 	{
 		print_permissions(file);
 		if (getpwuid(file->st_uid) == NULL)
-			ft_printf(" %hu %u ", file->st_nlink, file->st_uid);
+			ft_printf("%hu %u ", file->st_nlink, file->st_uid);
 		else
-			ft_printf(" %hu %s ", file->st_nlink, getpwuid(file->st_uid)->pw_name);
+			ft_printf("%hu %s", file->st_nlink, 
+						getpwuid(file->st_uid)->pw_name);
 		if (getgrgid(file->st_gid) == NULL)
-			ft_printf("%u ", file->st_uid);
+			ft_printf(" %u ", file->st_uid);
 		else
-			ft_printf("%s ", getgrgid(file->st_gid)->gr_name);
+			ft_printf(" %s ", getgrgid(file->st_gid)->gr_name);
 		ft_printf("%lli %.16s %s", file->size, get_date(file), file->name);
 		if (S_ISLNK(file->mode))
-		{
-			ft_bzero(lnk, NAME_MAX + 1);
-			readlink(file->full_path, lnk, NAME_MAX);
-			ft_printf(" -> %s", lnk);
-		}
+			print_link(file);
 		ft_putchar('\n');
 		file = file->next;
 	}

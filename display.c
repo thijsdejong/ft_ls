@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 09:49:26 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/29 10:40:28 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/29 11:06:56 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,12 @@ void			display(t_file *head, int count, bool first)
 	file = head;
 	while (file != NULL)
 	{
-		if ((S_ISDIR(file->mode)) && (first || (ft_strcmp(file->name, ".") &&
+		if ((S_ISDIR(file->mode) || S_ISLNK(file->mode)) && (first || (ft_strcmp(file->name, ".") &&
 			ft_strcmp(file->name, ".."))))
 		{
 			sub = read_dir(file->full_path, file->name);
-			print_full_path(file->full_path, count);
+			if (sub || S_ISDIR(file->mode))
+				print_full_path(file->full_path, count);
 			if (first && (g_options & OPT_L) && S_ISLNK(file->mode))
 				display_list_detailed(file, true);
 			else if (sub)
