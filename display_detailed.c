@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 14:43:36 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/29 11:10:23 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/29 11:29:12 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void			print_permissions(t_file *file)
 {
 	char *output;
 
-	output = (char*)ft_memalloc(sizeof(char) * 11);
+	output = (char*)ft_memalloc(sizeof(char) * 12);
 	if (output == NULL)
 		print_error("", MALLOC_ERROR);
 	output[0] = get_type(file);
