@@ -12,6 +12,8 @@ Handles the following options:
 
 ##Notes
 
+Check if getpwuid returns NULL
+
 - Options to implement (5)
 	-l, -R, -a, -r and -t
 
