@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/18 14:43:36 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/29 11:02:13 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/29 11:10:23 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,15 @@ void				display_list_detailed(t_file *file, bool single)
 	{
 		print_permissions(file);
 		if (getpwuid(file->st_uid) == NULL)
-			ft_printf("%hu %u ", file->st_nlink, file->st_uid);
+			ft_printf("%hu %u", file->st_nlink, file->st_uid);
 		else
-			ft_printf("%hu %s", file->st_nlink, 
+			ft_printf("%hu %s", file->st_nlink,
 						getpwuid(file->st_uid)->pw_name);
 		if (getgrgid(file->st_gid) == NULL)
-			ft_printf(" %u ", file->st_uid);
+			ft_printf(" %u", file->st_uid);
 		else
-			ft_printf(" %s ", getgrgid(file->st_gid)->gr_name);
-		ft_printf("%lli %.16s %s", file->size, get_date(file), file->name);
+			ft_printf(" %s", getgrgid(file->st_gid)->gr_name);
+		ft_printf(" %lli %.16s %s", file->size, get_date(file), file->name);
 		if (S_ISLNK(file->mode))
 			print_link(file);
 		ft_putchar('\n');

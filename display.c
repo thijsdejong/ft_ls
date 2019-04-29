@@ -6,7 +6,7 @@
 /*   By: tde-jong <tde-jong@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/17 09:49:26 by tde-jong       #+#    #+#                */
-/*   Updated: 2019/04/29 11:06:56 by tde-jong      ########   odam.nl         */
+/*   Updated: 2019/04/29 11:08:33 by tde-jong      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,16 @@ static void		display_list(t_file *file)
 	}
 }
 
-void			display(t_file *head, int count, bool first)
+void			display(t_file *file, int count, bool first)
 {
-	t_file *file;
 	t_file *sub;
 
 	if (!(g_options & OPT_R_UPP) && first == false)
 		return ;
-	file = head;
 	while (file != NULL)
 	{
-		if ((S_ISDIR(file->mode) || S_ISLNK(file->mode)) && (first || (ft_strcmp(file->name, ".") &&
-			ft_strcmp(file->name, ".."))))
+		if ((S_ISDIR(file->mode) || S_ISLNK(file->mode)) && (first ||
+			(ft_strcmp(file->name, ".") && ft_strcmp(file->name, ".."))))
 		{
 			sub = read_dir(file->full_path, file->name);
 			if (sub || S_ISDIR(file->mode))
